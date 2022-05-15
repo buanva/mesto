@@ -1,0 +1,21 @@
+.profile__about-me {
+    padding: 16px 0 0 0;
+    margin: 0;
+    width: 336px;
+    height: 18px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__about-me {
+        padding: 0;
+        width: 282px;
+        height: 14px;
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+    }
+}
