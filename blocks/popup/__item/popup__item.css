@@ -1,0 +1,24 @@
+.popup__item {
+    display: inline-block;
+    width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    border: none;
+    border-bottom: 1px solid #54545433;
+    padding: 0 0 13px;
+    margin: 0 0 30px;
+}
+
+.popup__item:last-of-type {
+    margin-bottom: 48px;
+}
+
+@media screen and (max-width: 768px) {
+    .popup__item:last-of-type {
+        margin-bottom: 45px;
+    }
+}
+
