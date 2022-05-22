@@ -3,8 +3,8 @@ let popup = document.querySelector('.popup');
 let closeButton = popup.querySelector('.popup__close-button');
 let profileName = document.querySelector('.profile__name')
 let profileAbout = document.querySelector('.profile__about-me')
-let valueName = popup.querySelector('.popup__input-name')
-let valueAbout = popup.querySelector('.popup__input-about')
+let valueName = popup.querySelector('.popup__item_info_name')
+let valueAbout = popup.querySelector('.popup__item_info_about')
 
 function openProfile() {
     popup.classList.toggle('popup_opened');
@@ -18,8 +18,6 @@ function openProfile() {
 }
 
 let formElement = popup.querySelector('.popup__container');
-valueName = popup.querySelector('.popup__input-name')
-valueAbout = popup.querySelector('.popup__input-about')
 
 function formSubmitHandler(evt) {
     evt.preventDefault();
@@ -27,11 +25,10 @@ function formSubmitHandler(evt) {
     if (valueName.value.length !== 0 && valueAbout.value.length !== 0) {
         profileName.textContent = valueName.value;
         profileAbout.textContent = valueAbout.value;
-        popup.classList.toggle('popup_opened');
+        openProfile();
     } else {
         alert('Пожалуйста, заполните данные профиля');
-    }
-    
+    }    
 }
 
 formElement.addEventListener('submit', formSubmitHandler);

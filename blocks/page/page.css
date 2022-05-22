@@ -13,7 +13,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 620px) {
     .page {
         padding-top: 28px;
     }

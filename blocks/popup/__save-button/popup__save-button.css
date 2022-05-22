@@ -11,6 +11,12 @@
     color: #FFFFFF;
     border: none;
     padding: 0;
+    cursor: pointer;
+    transition: opacity .3s linear;
+}
+
+.popup__save-button:hover {
+    opacity: .8;
 }
 
 @media screen and (max-width: 768px) {

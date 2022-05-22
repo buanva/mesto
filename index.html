@@ -13,23 +13,23 @@
     <div class="page">
 
         <header class="header">
-            <div class="header__logo"></div>
+            <a class="header__logo" href="#"></a>
         </header>
 
         <main class="main">
 
             <section class="profile">
                 <div class="profile__container">
-                    <div class="profile__avatar"></div>
+                    <div class="profile__avatar" style="background-image: url(images/Avatar.jpg);"></div>
                     <div class="profile__info">
                         <div class="profile__info-container">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
-                            <button class="profile__edit-button"></button>
+                            <button class="profile__edit-button" type="button" aria-label="edit-button"></button>
                         </div>
                         <p class="profile__about-me">Исследователь океана</p>
                     </div>
                 </div>
-                <button class="profile__add-button"></button>
+                <button class="profile__add-button" type="button" aria-label="add-button"></button>
             </section>
 
             <section class="elements">
@@ -38,42 +38,42 @@
                         <img class="elements__image" alt="Сентинский храм" src="images/Karachaevsk.png">
                         <div class="elements__container">
                             <h2 class="elements__title">Карачаевск</h2>
-                            <button class="elements__button-like elements__button-like_active"></button>
+                            <button class="elements__button-like elements__button-like_active" type="button" aria-label="like-button"></button>
                         </div>
                     </li>
                     <li class="elements__item">
                         <img class="elements__image" alt="Гора Эльбрус" src="images/Elbrus.png">
                         <div class="elements__container">
                             <h2 class="elements__title">Гора Эльбрус</h2>
-                            <button class="elements__button-like"></button>
+                            <button class="elements__button-like" type="button" aria-label="like-button"></button>
                         </div>
                     </li>
                     <li class="elements__item">
                         <img class="elements__image" alt="Горный хребет Домбай" src="images/Dombai.png">
                         <div class="elements__container">
                             <h2 class="elements__title">Домбай</h2>
-                            <button class="elements__button-like"></button>
+                            <button class="elements__button-like" type="button" aria-label="like-button"></button>
                         </div>
                     </li>
                     <li class="elements__item">
                         <img class="elements__image" alt="Гора Эльбрус" src="images/Elbrus.png">
                         <div class="elements__container">
                             <h2 class="elements__title">Гора Эльбрус</h2>
-                            <button class="elements__button-like"></button>
+                            <button class="elements__button-like" type="button" aria-label="like-button"></button>
                         </div>
                     </li>
                     <li class="elements__item">
                         <img class="elements__image" alt="Горный хребет Домбай" src="images/Dombai.png">
                         <div class="elements__container">
                             <h2 class="elements__title">Домбай</h2>
-                            <button class="elements__button-like"></button>
+                            <button class="elements__button-like" type="button" aria-label="like-button"></button>
                         </div>
                     </li>
                     <li class="elements__item">
                         <img class="elements__image" alt="Сентинский храм" src="images/Karachaevsk.png">
                         <div class="elements__container">
                             <h2 class="elements__title">Карачаево-Черкесия</h2>
-                            <button class="elements__button-like"></button>
+                            <button class="elements__button-like" type="button" aria-label="like-button"></button>
                         </div>
                     </li>
                 </ul>
@@ -87,18 +87,18 @@
 
         <div class="popup">
             <div class="popup__form-wrapper">
-                <button class="popup__close-button"></button>
-                <form class="popup__container">
+                <button class="popup__close-button" type="reset" aria-label="close-button"></button>
+                <form class="popup__container" name="popup-form">
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <input class="popup__item popup__input-name" type="text" placeholder="Имя">
-                    <input class="popup__item popup__input-about" type="text" placeholder="О себе">
-                    <button class="popup__save-button">Сохранить</button>
+                    <input class="popup__item popup__item_info_name" type="text" placeholder="Имя" name="popup-name">
+                    <input class="popup__item popup__item_info_about" type="text" placeholder="О себе" name="popup-about">
+                    <button class="popup__save-button" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
 
     </div>
 
-    <script src="index.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
 </html>

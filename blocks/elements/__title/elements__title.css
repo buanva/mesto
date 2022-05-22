@@ -1,5 +1,5 @@
 .elements__title {
-    width: 195px;
+    max-width: 195px;
     margin: 0;
     font-style: normal;
     font-weight: 900;

@@ -7,9 +7,10 @@
     line-height: 17px;
     color: #000000;
     border: none;
-    border-bottom: 1px solid #54545433;
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
     padding: 0 0 13px;
     margin: 0 0 30px;
+    outline: none;
 }
 
 .popup__item:last-of-type {
