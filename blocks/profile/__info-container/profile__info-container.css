@@ -5,8 +5,8 @@
 
 @media screen and (max-width: 920px) {
     .profile__info-container {
-        width: 282px;
+        max-width: 282px;
         justify-content: center;
-        margin-bottom: 14px;
+        margin-bottom: 4px;
     }
 }
