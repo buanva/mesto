@@ -79,6 +79,9 @@ function createCard(title, image) {
 
     cardElement.querySelector('.elements__title').textContent = title;
     cardElement.querySelector('.elements__image').style.backgroundImage = `url(${image})`;
+    cardElement.querySelector('.elements__button-like').addEventListener('click', function(evt) {
+        evt.target.classList.toggle('elements__button-like_active');
+    });
 
     return cardElement;
 };
