@@ -2,4 +2,6 @@
     width: 282px;
     height: 282px;
     margin-bottom: 25px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
