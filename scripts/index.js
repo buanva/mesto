@@ -1,11 +1,13 @@
-let editButton = document.querySelector('.profile__edit-button');
-let popup = document.querySelector('.popup');
-let closeButton = popup.querySelector('.popup__close-button');
-let profileName = document.querySelector('.profile__name');
-let profileAbout = document.querySelector('.profile__about-me');
-let valueName = popup.querySelector('.popup__item_info_name');
-let valueAbout = popup.querySelector('.popup__item_info_about');
+const editButton = document.querySelector('.profile__edit-button');
+const popup = document.querySelector('.popup');
+const newCardPopup = document.querySelector('.popup_add-new-card');
+const closeButton = popup.querySelector('.popup__close-button');
+const profileName = document.querySelector('.profile__name');
+const profileAbout = document.querySelector('.profile__about-me');
+const valueName = popup.querySelector('.popup__item_info_name');
+const valueAbout = popup.querySelector('.popup__item_info_about');
 const cardsContainer = document.querySelector('.elements__grid');
+const newCardButton = document.querySelector('.profile__add-button');
 
 
 function openProfile() {
@@ -85,10 +87,17 @@ function addCard(card) {
     cardsContainer.append(card);
 };
 
+function toggleNewCardPopup() {
+    newCardPopup.classList.toggle('popup_opened');
 
-//1. Добавить массив с карточками
-//2. Создать функцию создания карточки (с 2-мя параметрами: title и image), которая возвращает карточку.
-//3. Создать функцию добавления карточки в HTML 
-//4. 
+    if (!newCardPopup.classList.contains('popup_opened')) {
+        newCardPopup.querySelector('.popup__item_info_title').value = '';
+        newCardPopup.querySelector('.popup__item_info_link').value = '';
+    };
+};
+
+newCardButton.addEventListener('click', toggleNewCardPopup);
+newCardPopup.querySelector('.popup__close-button').addEventListener('click', toggleNewCardPopup);
+
 
 
