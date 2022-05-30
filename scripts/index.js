@@ -102,5 +102,18 @@ function toggleNewCardPopup() {
 newCardButton.addEventListener('click', toggleNewCardPopup);
 newCardPopup.querySelector('.popup__close-button').addEventListener('click', toggleNewCardPopup);
 
+function newCardSubmitHandler(evt) {
+    evt.preventDefault();
 
+    const title = newCardPopup.querySelector('.popup__item_info_title').value;
+    const image = newCardPopup.querySelector('.popup__item_info_link').value;
 
+    if (title !== '' && image !== '') {
+        cardsContainer.prepend(createCard(title, image));
+        toggleNewCardPopup();
+    } else {
+        alert('Заполните, пожалуйста, данные');
+    };
+};
+
+newCardPopup.querySelector('.popup__container').addEventListener('submit', newCardSubmitHandler);
