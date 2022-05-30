@@ -82,6 +82,9 @@ function createCard(title, image) {
     cardElement.querySelector('.elements__button-like').addEventListener('click', function(evt) {
         evt.target.classList.toggle('elements__button-like_active');
     });
+    cardElement.querySelector('.elements__button-delete').addEventListener('click', function() {
+        cardElement.remove();
+    });
 
     return cardElement;
 };
