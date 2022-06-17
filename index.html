@@ -47,10 +47,12 @@
         <div class="popup popup_popup-edit-profile">
             <div class="popup__form-wrapper">
                 <button class="popup__close-button" type="button" aria-label="close-button"></button>
-                <form class="popup__container" name="popup-form">
+                <form class="popup__container" name="popup-form" novalidate>
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <input class="popup__item popup__item_info_name" type="text" placeholder="Имя" name="popup-name">
-                    <input class="popup__item popup__item_info_about" type="text" placeholder="О себе" name="popup-about">
+                    <input id="name-input" class="popup__item popup__item_info_name" type="text" placeholder="Имя" name="popup-name" minlength="2" maxlength="40" required>
+                    <span class="popup__item-error name-input-error"></span>
+                    <input id="about-input" class="popup__item popup__item_info_about" type="text" placeholder="О себе" name="popup-about" minlength="2" maxlength="200" required>
+                    <span class="popup__item-error about-input-error"></span>
                     <button class="popup__save-button" type="submit">Сохранить</button>
                 </form>
             </div>
@@ -59,13 +61,23 @@
         <div class="popup popup_add-new-card">
             <div class="popup__form-wrapper">
                 <button class="popup__close-button" type="button" aria-label="close-button"></button>
-                <form class="popup__container" name="popup-form">
+                <form class="popup__container" name="popup-form" novalidate>
                     <h2 class="popup__title">Новое место</h2>
-                    <input class="popup__item popup__item_info_title" type="text" placeholder="Название" name="popup-name">
-                    <input class="popup__item popup__item_info_link" type="text" placeholder="Ссылка на картинку" name="popup-about">
+                    <input id="title-input" class="popup__item popup__item_info_title" type="text" placeholder="Название" name="popup-name" minlength="2" maxlength="30" required>
+                    <span class="popup__item-error title-input-error"></span>
+                    <input id="link-input" class="popup__item popup__item_info_link" type="url" placeholder="Ссылка на картинку" name="popup-about" required>
+                    <span class="popup__item-error link-input-error"></span>
                     <button class="popup__save-button" type="submit">Сохранить</button>
                 </form>
             </div>
+        </div>
+
+        <div class="popup popup_opacity popup_view-image">
+            <figure class="popup__figure-container">
+                <button class="popup__close-button" type="button" aria-label="close-button"></button>
+                <img class="popup__image" alt="Картинка места" src="#">
+                <figcaption class="popup__caption"></figcaption>
+            </figure>
         </div>
 
     </div>
@@ -81,13 +93,14 @@
         </li>
     </template>
 
-    <div class="popup popup_opacity popup_view-image">
+    <!-- <div class="popup popup_opacity popup_view-image">
         <figure class="popup__figure-container">
             <button class="popup__close-button" type="button" aria-label="close-button"></button>
             <img class="popup__image" alt="Картинка места" src="./images/roman-bolozan-Hiii7KXkR-I-unsplash.jpg">
             <figcaption class="popup__caption"></figcaption>
         </figure>
-    </div>
+    </div> -->
     <script src="scripts/index.js"></script>
+    <script src="scripts/validate.js"></script>
 </body>
 </html>

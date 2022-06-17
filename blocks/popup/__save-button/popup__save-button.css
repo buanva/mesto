@@ -13,6 +13,7 @@
     padding: 0;
     cursor: pointer;
     transition: opacity .3s linear;
+    margin-top: 18.34px;
 }
 
 .popup__save-button:hover {
