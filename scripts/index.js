@@ -114,7 +114,7 @@ function clearNewCardPopup() {
 
 function handleNewCardSubmit() {
     cardsContainer.prepend(createCard(newCardFormNameField.value, newCardFormLinkField.value));
-    closeAndClearNewCardPopup();
+    closePopup(newCardPopup);
 };
 
 newCardPopup.querySelector('.popup__container').addEventListener('submit', handleNewCardSubmit);
