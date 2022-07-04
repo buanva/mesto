@@ -1,14 +1,15 @@
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
 const profileName = document.querySelector('.profile__name');
 const editButton = document.querySelector('.profile__edit-button');
 const profileAbout = document.querySelector('.profile__about-me');
 const newCardButton = document.querySelector('.profile__add-button');
 const cardsContainer = document.querySelector('.elements__grid');
 const editProfilePopup = document.querySelector('.popup_popup-edit-profile');
-const closeButton = editProfilePopup.querySelector('.popup__close-button');
 const formElement = editProfilePopup.querySelector('.popup__container');
 const valueName = editProfilePopup.querySelector('.popup__item_info_name');
 const valueAbout = editProfilePopup.querySelector('.popup__item_info_about');
-const editProfilePopupSaveButton = editProfilePopup.querySelector('.popup__save-button');
 const newCardPopup = document.querySelector('.popup_add-new-card');
 const newCardPopupForm = newCardPopup.querySelector('.popup__container');
 const newCardFormNameField = newCardPopup.querySelector('.popup__item_info_title');
@@ -16,7 +17,6 @@ const newCardFormLinkField = newCardPopup.querySelector('.popup__item_info_link'
 const viewImagePopup = document.querySelector('.popup_view-image');
 const viewImage = viewImagePopup.querySelector('.popup__image');
 const viewImageCaption = viewImagePopup.querySelector('.popup__caption');
-const cardTemplateContent = document.querySelector('#elements__item-template').content;
 const initialCards = [
     {
       name: 'Архыз',
@@ -72,35 +72,6 @@ editButton.addEventListener('click', function() {
     toggleOpenedPopupButtonState();
 });
 
-initialCards.forEach(function(card) {
-    const cardTitle = card.name;
-    const cardImageLink = card.link;
-    const cardElement = createCard(cardTitle, cardImageLink);
-    addCard(cardElement);
-});
-
-function createCard(title, image) {
-    const cardElement = cardTemplateContent.querySelector('.elements__item').cloneNode(true);
-
-    cardElement.querySelector('.elements__title').textContent = title;
-    cardElement.querySelector('.elements__image').style.backgroundImage = `url(${image})`;
-    cardElement.querySelector('.elements__button-like').addEventListener('click', function(evt) {
-        evt.target.classList.toggle('elements__button-like_active');
-    });
-    cardElement.querySelector('.elements__button-delete').addEventListener('click', function() {
-        cardElement.remove();
-    });
-    cardElement.querySelector('.elements__image').addEventListener('click', function() {
-        handleImageViewPopup(title, image);
-    });
-
-    return cardElement;
-};
-
-function addCard(card) {
-    cardsContainer.append(card);
-};
-
 newCardButton.addEventListener('click', function() {
     clearNewCardPopup();
     openPopup(newCardPopup);
@@ -113,7 +84,9 @@ function clearNewCardPopup() {
 };
 
 function handleNewCardSubmit() {
-    cardsContainer.prepend(createCard(newCardFormNameField.value, newCardFormLinkField.value));
+    const card = new Card(newCardFormNameField.value, newCardFormLinkField.value, '#elements__item-template', handleImageViewPopup);
+    const cardElement = card.generateCard();
+    cardsContainer.prepend(cardElement);
     closePopup(newCardPopup);
 };
 
@@ -163,3 +136,22 @@ function toggleOpenedPopupButtonState() {
         saveButton.removeAttribute('disabled');
     }
 }
+
+initialCards.forEach(function(item) {
+    const card = new Card(item.name, item.link, '#elements__item-template', handleImageViewPopup);
+    const cardElement = card.generateCard();
+
+    cardsContainer.append(cardElement);
+});
+
+Array.from(document.querySelectorAll('.popup__container')).forEach((form) => {
+    const validatedForm = new FormValidator(form, {
+        formSelector: '.popup__container',
+        inputSelector: '.popup__item',
+        submitButtonSelector: '.popup__save-button',
+        inactiveButtonClass: 'popup__save-button_inactive',
+        inputErrorClass: 'popup__item_type_error',
+        errorClass: 'popup__item-error_active'
+    });
+    validatedForm.enableValidation();
+});
