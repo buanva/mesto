@@ -1,9 +1,9 @@
 export default class Card {
-    constructor(name, link, cardTemplateSelector, imagePopupHandler) {
+    constructor(name, link, cardTemplateSelector, handleImagePopup) {
         this._name = name;
         this._link = link;
         this._cardTemplateSelector = cardTemplateSelector;
-        this._imagePopupHandler = imagePopupHandler;
+        this._handleImagePopup = handleImagePopup;
     }
 
     _getTemplate() {
@@ -20,32 +20,37 @@ export default class Card {
         this._element = this._getTemplate();
         this._setEventListeners();
     
-        this._element.querySelector('.elements__image').style.backgroundImage = `url(${this._link})`;
+        this._cardImage.style.backgroundImage = `url(${this._link})`;
         this._element.querySelector('.elements__title').textContent = this._name;
     
         return this._element;
     }
 
-    _handleTheLikeButton(evt) {
-        evt.target.classList.toggle('elements__button-like_active');
+    _handleTheLikeButton() {
+        this._likeButton.classList.toggle('elements__button-like_active');
     }
 
     _handleTheDeleteButton() {
         this._element.remove();
+        this._element = null;
     }
 
     _handleImageViewPopup() {
-        this._imagePopupHandler(this._name, this._link);
+        this._handleImagePopup(this._name, this._link);
     };
 
     _setEventListeners() {
-        this._element.querySelector('.elements__button-like').addEventListener('click', this._handleTheLikeButton);
+        this._likeButton = this._element.querySelector('.elements__button-like');
+        this._likeButton.addEventListener('click', () => {
+            this._handleTheLikeButton();
+        });
 
         this._element.querySelector('.elements__button-delete').addEventListener('click', () => {
             this._handleTheDeleteButton()
         });
 
-        this._element.querySelector('.elements__image').addEventListener('click', () => {
+        this._cardImage = this._element.querySelector('.elements__image');
+        this._cardImage.addEventListener('click', () => {
             this._handleImageViewPopup(); 
         });
     }
