@@ -3,7 +3,6 @@ export default class FormValidator {
     this._inputSelector = settings.inputSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
-    this._errorClass = settings.errorClass;
 
     this._validatedForm = validatedForm;
     this._submitButton = validatedForm.querySelector(settings.submitButtonSelector);
@@ -30,11 +29,9 @@ export default class FormValidator {
 
   _showSpanError(validationMessage, errorElement) {
     errorElement.textContent = validationMessage;
-    errorElement.classList.add(this._errorClass);
   }
 
   _hideSpanError(errorElement) {
-    errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
   }
 

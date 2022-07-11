@@ -23,7 +23,6 @@ const commonFormSelectors = {
     submitButtonSelector: '.popup__save-button',
     inactiveButtonClass: 'popup__save-button_inactive',
     inputErrorClass: 'popup__item_type_error',
-    errorClass: 'popup__item-error_active'
 };
 const profileValidation = new FormValidator(formEditProfile, commonFormSelectors);
 const newCardValidation = new FormValidator(newCardPopupForm, commonFormSelectors);
