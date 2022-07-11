@@ -95,14 +95,14 @@ function clearNewCardPopup() {
     newCardPopupForm.reset();
 };
 
-function createCard() {
-    const card = new Card(newCardFormNameField.value, newCardFormLinkField.value, '#elements__item-template', handleImageViewPopup);
+function createCard(name, link) {
+    const card = new Card(name, link, '#elements__item-template', handleImageViewPopup);
     return card.generateCard();
 }
 
 function handleNewCardSubmit(evt) {
     evt.preventDefault();
-    const cardElement = createCard();
+    const cardElement = createCard(newCardFormNameField.value, newCardFormLinkField.value);
     cardsContainer.prepend(cardElement);
     closePopup(newCardPopup);
 };
@@ -118,23 +118,13 @@ function handleImageViewPopup(title, image) {
     openPopup(viewImagePopup);
 };
 
-popupEditProfile.addEventListener('mousedown', function (evt) {
-    if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
-        closePopup(evt.currentTarget);
-    };
-});
-
-newCardPopup.addEventListener('mousedown', function (evt) {
-    if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
-        closePopup(evt.currentTarget);
-    };
-});
-
-viewImagePopup.addEventListener('mousedown', function (evt) {
-    if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
-        closePopup(evt.currentTarget);
-    };
-});
+document.querySelectorAll('.popup').forEach(function (popup) {
+    popup.addEventListener('mousedown', function (evt) {
+        if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-button')) {
+            closePopup(popup);
+        };
+    });
+})
 
 function closeByEscape(evt) {
     if (evt.key === 'Escape') {
@@ -143,10 +133,7 @@ function closeByEscape(evt) {
 };
 
 initialCards.forEach(function(item) {
-    const card = new Card(item.name, item.link, '#elements__item-template', handleImageViewPopup);
-    const cardElement = card.generateCard();
-
-    cardsContainer.append(cardElement);
+    cardsContainer.append(createCard(item.name, item.link));
 });
 
 profileValidation.enableValidation();
