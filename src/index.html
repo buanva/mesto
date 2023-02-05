@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место</title>
-    <link rel="stylesheet" href="pages/index.css">
 </head>
 
 <body class="body">
@@ -20,7 +19,7 @@
 
             <section class="profile">
                 <div class="profile__container">
-                    <div class="profile__avatar" style="background-image: url(images/Avatar.jpg);"></div>
+                    <div class="profile__avatar" style="background-image: url(<%=require('./images/Avatar.jpg')%>);"></div>
                     <div class="profile__info">
                         <div class="profile__info-container">
                             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -49,9 +48,9 @@
                 <button class="popup__close-button" type="button" aria-label="close-button"></button>
                 <form class="popup__container" name="popup-form" novalidate>
                     <h2 class="popup__title">Редактировать профиль</h2>
-                    <input id="name-input" class="popup__item popup__item_info_name" type="text" placeholder="Имя" name="popup-name" minlength="2" maxlength="40" required>
+                    <input id="name-input" class="popup__item popup__item_info_name" type="text" placeholder="Имя" name="name" minlength="2" maxlength="40" required>
                     <span class="popup__item-error name-input-error"></span>
-                    <input id="about-input" class="popup__item popup__item_info_about" type="text" placeholder="О себе" name="popup-about" minlength="2" maxlength="200" required>
+                    <input id="about-input" class="popup__item popup__item_info_about" type="text" placeholder="О себе" name="about" minlength="2" maxlength="200" required>
                     <span class="popup__item-error about-input-error"></span>
                     <button class="popup__save-button" type="submit">Сохранить</button>
                 </form>
@@ -63,9 +62,9 @@
                 <button class="popup__close-button" type="button" aria-label="close-button"></button>
                 <form class="popup__container" name="popup-form" novalidate>
                     <h2 class="popup__title">Новое место</h2>
-                    <input id="title-input" class="popup__item popup__item_info_title" type="text" placeholder="Название" name="popup-name" minlength="2" maxlength="30" required>
+                    <input id="title-input" class="popup__item popup__item_info_title" type="text" placeholder="Название" name="title" minlength="2" maxlength="30" required>
                     <span class="popup__item-error title-input-error"></span>
-                    <input id="link-input" class="popup__item popup__item_info_link" type="url" placeholder="Ссылка на картинку" name="popup-about" required>
+                    <input id="link-input" class="popup__item popup__item_info_link" type="url" placeholder="Ссылка на картинку" name="link" required>
                     <span class="popup__item-error link-input-error"></span>
                     <button class="popup__save-button" type="submit">Сохранить</button>
                 </form>
@@ -93,14 +92,5 @@
         </li>
     </template>
 
-    <!-- <div class="popup popup_opacity popup_view-image">
-        <figure class="popup__figure-container">
-            <button class="popup__close-button" type="button" aria-label="close-button"></button>
-            <img class="popup__image" alt="Картинка места" src="./images/roman-bolozan-Hiii7KXkR-I-unsplash.jpg">
-            <figcaption class="popup__caption"></figcaption>
-        </figure>
-    </div> -->
-    <script type="module" src="scripts/index.js"></script>
-    <!-- <script type="module" src="scripts/validate.js"></script> -->
 </body>
 </html>
