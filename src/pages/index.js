@@ -1,22 +1,26 @@
 import '../pages/index.css'
 
+import { 
+    formEditProfile,
+    commonFormSelectors,
+    newCardPopupForm,
+    buttonEditProfile,
+    valueName,
+    valueAbout,
+    newCardButton,
+    initialCards,
+    newCardFormNameField,
+    newCardFormLinkField,
+} from '../utils/constants.js';
+import {
+    clearNewCardPopup,
+    createCard
+} from '../utils/utils.js';
 import FormValidator from '../components/FormValidator.js';
-import { formEditProfile } from '../utils/constants.js';
-import { commonFormSelectors } from '../utils/constants.js';
-import { newCardPopupForm } from '../utils/constants.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import { handleFormSubmit } from '../utils/utils.js';
-import { handleNewCardSubmit } from '../utils/utils.js';
-import { buttonEditProfile } from '../utils/constants.js';
-import { valueName } from '../utils/constants.js';
-import { valueAbout } from '../utils/constants.js';
-import { newCardButton } from '../utils/constants.js';
-import { clearNewCardPopup } from '../utils/utils.js';
 import Section from '../components/Section.js';
-import { initialCards } from '../utils/constants.js';
-import { createCard } from '../utils/utils.js';
 
 const profileValidation = new FormValidator(formEditProfile, commonFormSelectors);
 profileValidation.enableValidation();
@@ -32,8 +36,16 @@ export const handleUserInfo = new UserInfo({
     nameSelector: '.profile__name',
     aboutSelector: '.profile__about-me'
 });
+
 export const handleFormEditProfile = new PopupWithForm('.popup_popup-edit-profile', formEditProfile, handleFormSubmit);
 handleFormEditProfile.setEventListeners();
+
+export function handleFormSubmit(evt) {
+    evt.preventDefault();
+    handleUserInfo.setUserInfo(handleFormEditProfile.giveInputValues());
+    handleFormEditProfile.close();
+};
+
 export const handleFormNewCardSubmit = new PopupWithForm('.popup_add-new-card', newCardPopupForm, handleNewCardSubmit);
 handleFormNewCardSubmit.setEventListeners();
 
@@ -65,3 +77,10 @@ export const cardList = new Section({
   }, '.elements__grid');
 
 cardList.renderItems();
+
+export function handleNewCardSubmit(evt) {
+    evt.preventDefault();
+    const cardElement = createCard(newCardFormNameField.value, newCardFormLinkField.value);
+    cardList.prependItem(cardElement);
+    handleFormNewCardSubmit.close();
+};
