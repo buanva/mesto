@@ -7,7 +7,6 @@
     background-image: url(../../../images/like.svg);
     background-repeat: no-repeat;
     transition: opacity .3s linear;
-    margin: 5px 5px -1px 0;
     cursor: pointer;
 }
 
