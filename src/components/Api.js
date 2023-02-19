@@ -4,35 +4,35 @@ export default class Api {
         this._headers = headers;
     }
 
-    addNewCard(name, link, error) {
-        return this._send('cards', 'POST', { name: name, link: link }, error);
+    addNewCard(name, link) {
+        return this._send('cards', 'POST', { name: name, link: link });
     }
 
-    getCards(error) {
-        return this._send('cards', null, null, error);
+    getCards() {
+        return this._send('cards');
     }
 
-    getUserInfo(error) {
-        return this._send('users/me', null, null, error);
+    getUserInfo() {
+        return this._send('users/me');
     }
 
-    editProfile(obj, error) {
-        return this._send('users/me', 'PATCH', obj, error);
+    editProfile(obj) {
+        return this._send('users/me', 'PATCH', obj);
     }
 
-    requestDeleteCard(cardId, error) {
-        return this._send(`cards/${cardId}`, 'DELETE', null, error);
+    requestDeleteCard(cardId) {
+        return this._send(`cards/${cardId}`, 'DELETE');
     }
 
-    requestLikeAction(like, cardId, error) {
-        return this._send(`cards/${cardId}/likes`, like ? 'DELETE' : 'PUT', null, error);
+    requestLikeAction(like, cardId) {
+        return this._send(`cards/${cardId}/likes`, like ? 'DELETE' : 'PUT');
     }
 
-    editAvatar(link, error) {
-        return this._send('users/me/avatar', 'PATCH', { avatar: link }, error);
+    editAvatar(link) {
+        return this._send('users/me/avatar', 'PATCH', { avatar: link });
     }
 
-    _send(path, method, body, error) {
+    _send(path, method, body) {
         const options = {
             method: method ? method : "GET",
             headers: this._headers
@@ -43,11 +43,5 @@ export default class Api {
         };
         return fetch(`${this._baseUrl}/${path}`, options)
             .then(res => res.ok ? res.json() : Promise.reject(res))
-            .catch(err => {
-                console.error('Что-то пошло не так', err);
-                if (error) {
-                    error(err)
-                };
-            });
     }
 };

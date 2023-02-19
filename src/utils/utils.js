@@ -26,6 +26,7 @@ function openPopupDeleteCard(cardId, callback) {
         .then(() => {
             callback()
         })
+        .catch(err => console.error('Что-то пошло не так', err));
     });
 }
 
@@ -34,4 +35,5 @@ export function handleLike(like, cardId, callback) {
     .then((res) => {
         callback(res.likes)
     })
+    .catch(err => console.error('Что-то пошло не так', err));
 }
